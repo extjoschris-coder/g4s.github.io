@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Tutorial do Controlador de Acesso - G4S</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f6f8;
+    }
+
+    header {
+      background-color: #001C41;
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    header img { 
+       width: 40%; /* ocupa toda a largura */ 
+       display: block; /* remove espaço branco abaixo da imagem */ 
+    }
+
+    nav {
+      background-color: #162447;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #4da3ff;
+    }
+
+
+    /* 🔽 SUBMENU (ADICIONADO) */
+    .dropdown {
+      display: inline-block;
+      position: relative;
+    }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      background-color: #162447;
+      min-width: 180px;
+      top: 100%;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .submenu a {
+      display: block;
+      padding: 10px;
+      color: white;
+      text-align: left;
+    }
+
+    .submenu a:hover {
+      background-color: #1f3c88;
+    }
+
+    .dropdown:hover .submenu {
+      display: block;
+    }
+    /* 🔼 FIM SUBMENU */
+
+
+    .container {
+      padding: 20px;
+    }
+
+    .section {
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #1f3c88;
+    }
+
+   .info-card {
+     display: flex;
+     align-items: flex-start;
+     gap: 20px;
+   }
+
+   .img-postos {
+     width: 250px;
+     height: auto;
+   }
+
+  .texto-postos {
+     flex: 1;
+   }
+
+    footer {
+      background-color: #1f3c88;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .info-card {
+        flex-direction: column;
+      }
+
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <img src="logo.png" alt="Logotipo da empresa">
+</header>
+
+
+<div id="topo"></div>
+
+<nav>
+  <a href="#inicio">Início</a>
+  <a href="#cliente">Cliente</a>
+
+  <!-- 🔽 POSTOS COM SUBMENU -->
+  <div class="dropdown">
+    <a href="#Controlador">Controlador</a>
+    <div class="submenu">
+      <a href="#funcao">Função</a>
+      <a href="#conectando">Iniciando o Plantão</a>
+      <a href="#pedestre">Acesso de Pedestres</a>
+      <a href="#veiculo">Acesso de Veículos</a>
+      <a href="#baixa">Baixa de Cartões</a>
+      <a href="#tags">Baixa das TAGs</a>
+      <a href="#finalizando">Finalizando o Plantão</a>
+    </div>
+  </div>
+  <!-- 🔼 -->
+  <a href="#contato">Contato</a>
+  <a href="#empresa">A Empresa</a>
+</nav>
+
+<div class="container">
+
+  <div class="section" id="inicio">
+    <h2>Bem-vindo</h2>
+    <p>Este site tem como objetivo apresentar todas as rotinas de um Controlador de Acesso, em conformidade com as regras e os procedimentos previamente estabelecidos pelo cliente com a nossa empresa.</p>
+  </div>
+</div>
+
+<div class="section" id="cliente">
+  <h2>Cliente</h2>
+
+  <div class="info-card">
+    
+    <img src="meli.png" alt="Logo do Mercado Livre" class="imagem-cliente">
+
+    <div class="texto-cliente">
+
+      <p><strong>Mercado Livre</strong></p>
+
+      <p><strong>Unidade:</strong> BRSC02 - Governador Celso Ramos - SC</p>
+
+      <p>
+        <strong>Endereço:</strong> 
+        Av. Papenborg, 2555 - Galpão G300 - Condomínio Park Log<br>
+        CEP: 88194-310
+      </p>
+
+      <p><strong>LOSS PREVENTION</strong></p>
+
+      <p>
+        <strong>Gerente:</strong> 
+        <a href="mailto:bruno.sferreira@mercadolivre.com">
+          Bruno Ferreira dos Santos
+        </a>
+      </p>
+
+      <p>
+        <strong>Supervisor:</strong> 
+        <a href="mailto:wagner.costa@mercadolivre.com">
+          Wagner da Costa
+        </a>
+      </p>
+
+      <p><strong>Analistas (Security/CCM)</strong></p>
+
+      <ul class="lista-contatos">
+        <li><a href="mailto:patrique.tusset@mercadolivre.com">Patrique Tusset</a></li>
+        <li><a href="mailto:jederson.vanderlinde@mercadolivre.com">Jederson Vanderlinde</a></li>
+        <li><a href="mailto:alvaro.jacomelli@mercadolivre.com">Alvaro Michel Jacomelli</a></li>
+        <li><a href="mailto:denilma.lech@mercadolivre.com">Denilma Lech Batista</a></li>
+        <li><a href="mailto:patrick.khachan@mercadolivre.com">Patrick Bergmann Khachan</a></li>
+        <li><a href="mailto:fabio.pstein@mercadolivre.com">Fabio Pasquatto Stein</a></li>
+        <li><a href="mailto:thinelli.ricardo@mercadolivre.com">Thinelli Reis dos Santos</a></li>
+        <li><a href="mailto:valdinei.manoelalves@mercadolivre.com">Valdinei Manoel Alves</a></li>
+      </ul>
+
+    </div>
+  </div>
+      <a href="#topo" class="btn-voltar">VOLTAR</a>
+</div>
+  <div class="section" id="funcao">
+    <h2>O que faz um Controlador de Acesso?</h2>
+
+    <div class="info-card">
+
+      <img src="controlador.png" class="img-controlador" alt="Controlador de acesso">
+
+      <div class="texto-controlador">
+
+        <p><strong>Controle de entrada e saída</strong><br>
+        Verificar credenciais, registrar visitantes, colaboradores e veículos, garantindo que apenas indivíduos autorizados tenham acesso a empresa, mantendo um histórico detalhado de movimentações para auditorias e investigações futuras.</p>
+
+        <p><strong>Monitoramento interno</strong><br>
+        Observa o fluxo de pessoas e veículos, utilizando videomonitoramento, assegurando que tudo ocorra dentro da normalidade. 
+        </p>
+
+        <p><strong>Identificação de atividades suspeitas</strong><br>
+        Estar atento a comportamentos fora do padrão, fraudes ou tentativas de acesso indevido, atuando rapidamente para neutralizar ameaças e acionar protocolos de segurança.</p>
+
+        <p><strong>Apoio e orientação</strong><br>
+        Fornece informações e direcionamento a visitantes, colaboradores ou prestadores de serviços, facilitando a circulação dos mesmos sem comprometer a segurança.</p>
+
+        <p><strong>Postura profissional</strong><br>
+        Atua como ponto de contato inicial, mantendo comportamento diplomático e eficiente, garantindo a imagem da organização e a segurança do ambiente.</p>
+
+      </div>
+
+    </div>
+    <a href="#topo" class="btn-voltar">VOLTAR</a>
+  </div>
+
+  <div class="section" id="conectando">
+    <h2>Início de Plantão</h2>
+
+    <ol>
+      <li><a href="#assumindo">Assumindo o plantão</a></li>  
+      <li><a href="#computador">Logando no Computador</a></li>  
+      <li><a href="#google">Logando no Google</a></li>  
+      <li><a href="#contagem">Contagem de Cartões</a></li>  
+      <li><a href="#eclusa">Informar o Status da Eclusa</a></li>  
+      <li><a href="#livro">Abrir Livro de Ocorrências</a></li>  
+   </ol>
+
+
+        <div class="section" id="assumindo">
+          <h2>Assumindo o plantão</h2> 
+          <img src="Portaria.png" alt="Assumindo o plantão" style="max-width:100%; height:auto; margin:10px 0;">
+          <p>Ao assumir o plantão o Controlador deverá fazer uma breve inspeção nos equipamentos e ferramentas de trabalho tais como as condições gerais do ambiente antes de iniciar o turno.<br>
+          Se alguma anomalia for identificada o controlador deverá comunicar imediatamente ao vigilante líder e registrar em livro de ocorrências.</p>
+          <a href="#topo" class="btn-voltar">VOLTAR</a>
+        </div> 
+
+        <div class="section" id="computador">
+
+        <h2>Logando no Computador</h2>
+
+        <img src="Login.png" alt="Logando no Sistema" style="max-width:100%; height:auto; margin:10px 0;">
+
+        <p>Reinicie o computardor e informe seu Login e Senha de acesso conforme tela acima.<br></p>
+
+        <a href="#topo" class="btn-voltar">VOLTAR</a>
+        </div> 
+
+        <div class="section" id="google">
+
+        <h2>Logando no Google</h2>
+
+        <img src="Google.png" alt="Logando no Google" style="max-width:100%; height:auto; margin:10px 0;">
+
+        <p>Selecione o seu usuário na tela acima e em seguida abra o Aplicativo da Portaria (PORTARIA) localizado na barra de tarefas do Google.<br><p>
+        <p>Na sequência clique em seu login novamente que o Google irá solicitar a sua senha novamente e irá solicitar a autenticação no sistema conforme sequência de telas abaixo.<br><p>
+
+        <img src="Login google.png" alt="Informe sua Senha" style="max-width:100%; height:auto; margin:10px 0;"><p>
+        <img src="autenticator 2.png" alt="Código Autenticator" style="max-width:100%; height:auto; margin:10px 0;"><p>
+        <img src="Autenticator.png" alt="Autenticando no sistema" style="max-width:100%; height:auto; margin:10px 0;"><p>
+
+        <p>Pronto! Você já está logado no sistema.<br><p>
+        <a href="#topo" class="btn-voltar">VOLTAR</a>
+
+        </div> 
+
+        <div class="section" id="contagem">
+
+        <h2>Contagem dos Cartões de Acesso da Portaria</h2>
+
+        <img src="insumos.png" alt="Contagem de Cartões" style="max-width:100%; height:auto; margin:10px 0;"><p>
+        O próximo passo é efetuar a contagem dos cartões para dar início ao plantão e preencher o formulário de insumos conforme a tela acima clicando no link abaixo.</p>
+       <p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfvfQ099NbhlCvAJXVuPwreKfanIOQmCmhE0OguKdzDiRCUAQ/viewform" target="_blank">
+            Acessar formulário de insumos
+         </a>
+       </p>
+
+       <a href="#topo" class="btn-voltar">VOLTAR</a>
+
+        </div> 
+
+        <div class="section" id="eclusa">
+
+        <h2>Informar o Status de Operação das Eclusas</h2>
+
+        <img src="stateclusa.png" alt="Status da Eclusa" style="max-width:100%; height:auto; margin:10px 0;"><p>
+        <p>Informe as condições dos portões, cancelas e garras de tigre de cada eclusa clicando no aplicativo abaixo.<p>
+
+      <a href="https://www.appsheet.com/start/8878a336-d10c-44cb-ac3e-1b8182b540a2?platform=desktop#appName=STATUSECLUSAEPORT%C3%83OG200300-330291864&vss=H4sIAAAAAAAAA62PTQrCMBSEryKzzgmylYJF60ZxY1zE5hWCbVKaVC0hp_IIXszUHwSXxeWb4fuYF3DWdNl4WZ7A9-F7LWkARxDYDi0JcIG5Nb6ztQATWMvmFS608_dbp0s7K7JVLhARD-yj8eTAwyQL_8sWBq3IeF1p6kblKEiqN57qEU7BD4rI0PReHmt6fpHQGFNW2bJ3pHZp2PRBLjfZtZVGFVYlcyVrR_EB8psMhYgBAAA=&view=Hist%C3%B3rico%20MELI" target="_blank">
+      STATUS DA ECLUSA </a>
+
+        <p>Publique o resultado do seu informe no grupo NOVA PORTARIA do whatsapp.<p>
+
+      <a href="#topo" class="btn-voltar">VOLTAR</a>
+
+      </div> 
+
+      <div class="section" id="livro">
+
+      <h2>Abertura do Livro de Ocorrências</h2>
+
+      <img src="livro.png" alt="Livro de Ocorrência" style="max-width:100%; height:auto; margin:10px 0;">
+
+      <p>
+        Em seguida, abra o livro de ocorrências anotando as informações relevantes para o setor,
+        bem como as anomalias encontradas na vistoria inicial, seguindo o modelo abaixo:
+      </p>
+
+      <p><strong>G4S, 24 de Abril de 2026</strong></p>
+      <p><strong>Mercado Livre, Governador Celso Ramos - SC</strong></p>
+      <p><strong>Equipe: Charlie - Horário: 6h às 18h</strong></p>
+      <p><strong>Líder: Charlene</strong></p>
+      <p><strong>Controladores: Christiano</strong></p>
+      <p>
+        - Assumimos o plantão com todos os portões em 5 pontos e todas as ferramentas de trabalho no QTH
+        (1 HT e 2 hands no QTH).
+      </p>
+      <p>
+         - Massiva conferida pela Equipe Bravo.
+      </p>
+     <a href="#topo" class="btn-voltar">VOLTAR</a>
+  </div>
+
+<div class="section" id="veiculo">
+  <h2>🚗 Acesso de Veículos</h2>
+
+  <div class="info-card">
+
+    <img src="eclusa.png" alt="Eclusas de acesso de veículos" class="imagem-cliente">
+
+    <div class="texto-cartoes">
+
+      <h3>Entrada e Saída de Veículos</h3> 
+
+      <p>
+        O acesso de veículos ao site ocorre exclusivamente pelas eclusas do <strong>G300</strong>, 
+        com exceção das carretas do <strong>Full</strong>, que utilizam o acesso do <strong>G200</strong> 
+        para operações de carga e descarga.
+      </p>
+
+      <p><strong>Tipos de acesso pelas eclusas do G300:</strong></p>
+
+      <ul>
+        <li>Prestador de Serviço</li>
+        <li>Visitante</li>
+        <li>Colaborador Meli</li>
+        <li>Seller</li>
+        <li>Correios</li>
+        <li>Entrega de Insumos</li>
+        <li>Entrega de Restaurante</li>
+        <li>Entrega de Manutenção</li>
+      </ul>
+
+      <div class="alerta-acesso">
+        <p><strong>⚠️ Atenção:</strong></p>
+        <p>
+          Não é permitido o acesso de <strong>Sellers</strong> com veículos:
+        </p>
+        <ul>
+          <li>Basculante</li>
+          <li>Com plataforma</li>
+          <li>Com carroceria aberta</li>
+        </ul>
+        <p>
+          Esses veículos são permitidos apenas para outros perfis, pois não realizam descarga em doca.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+    <div class="info-card">
+     
+      <img src="botoeira.png" alt="Central de Comandos" class="imagem-central"><p>
+
+      <div class="texto-central">
+
+      <h2>🚨 CENTRAL DE COMANDO</h2>
+       <h3>Controle de Eclusas</h3>
+
+        <div class="bloco regra">
+          <h4>🔒 REGRA OBRIGATÓRIA</h4>
+           <p>NUNCA abrir os dois portões da mesma eclusa ao mesmo tempo.</p>
+           <p>Se um portão estiver <strong>ABERTO</strong>, o outro deve permanecer <strong>FECHADO</strong>.</p>
+       </div>
+
+       <div class="bloco excecao">
+         <h4>🚌 EXCEÇÃO – SAÍDA DE FRETADOS</h4>
+         <p>É permitida a abertura simultânea dos portões para agilizar o fluxo de saída.</p>
+       </div>
+
+       <div class="bloco alerta">
+        <h4>⚠️ ATENÇÃO</h4>
+          <p>O descumprimento desta regra compromete a segurança do local.</p>
+       </div>      
+    </div>
+  </div>
+
+<div class="info-card">
+
+  <p><img src="gate.png" alt="Veículos Não Bipados" class="imagem-central">    </p>
+
+
+  <div class="texto-central">
+    <h2>🚗 Veículos Não Bipados</h2>
+
+    <p>
+      Veículos não bipados são aqueles que não possuem liberação automática de acesso 
+      por meio de identificação eletrônica.
+    </p>
+
+    <p>
+      Nesses casos, é obrigatória a atuação da equipe da portaria para realizar a liberação manual, 
+      seguindo os procedimentos de segurança estabelecidos.
+    </p>
+
+    <p>  
+      Para dar entrada ou saída nos veículos abra o link abaixo</p>
+
+      <a href="https://www.appsheet.com/start/cf5105cc-0cbb-4227-9f76-78446031709a?newUser=true&onboarding=true#appName=PORTARIA-5183578&group=%5B%7B%22Column%22%3A%22Data%22%2C%22Order%22%3A%22Descending%22%7D%5D&page=fastTable&sort=%5B%5D&table=Respostas+ao+formul%C3%A1rio+7&view=VE%C3%8DCULOS+N%C3%83O+BIPADOS" target="_blank">
+        Acessar APP PORTARIA VEÍCULOS NÃO BIPADOS</p></a>
+
+     <p>Clique na lupa no canto superior direito do aplicativo e efetue a pesquise pela placa do veículo ou cpf/nome do motorista.</p>    
+     <p>Se o veículo for localizado é só clicar no registro correspondente, informar a Eclusa que ele está e indicar se está ENTRANDO ou SAINDO. Agora é só salvar.</p>    
+     <p>Se o veículo for localizado, mas o seu cadastro ainda estiver PENDENTE o veículo deverá se retirar da Eclusa, entrar em contato com o seu anfitrião e solicitar a APROVAÇÃO do seu cadastro.</p>    
+     <p>Se o veículo NÃO for localizado, ele não poderá acessar.</p>    
+    <div class="alerta-acesso">
+      <p><strong>⚠️ Atenção:</strong></p>
+      <p>Se o motorista for localizado, estiver APROVADO, porém não houver placa inserida em seu cadastro ele só poderá acessar à pé pelos torniquetes.</p>
+      <p>Nenhum veículo pode acessar o site sem a devida validação e autorização prévia.</p>
+    </div>
+
+  </div>
+
+  </div>
+
+
+<div class="info-card">
+
+  <p><img src="forn_restmanut.png" alt="Fornecedores Frequentes" class="imagem-central"></p>
+
+
+<div class="texto-central">
+  <h2>🚗 Fornecedores Frequentes do Restaurante / Manutenção</h2>
+
+  <p>
+    Veículos de fornecedores do restaurante ou da manutenção que possuam frequência autorizada pelo setor de Loss Prevention podem acessar o site mesmo sem cadastro previamente aprovado.
+  </p>
+
+  <p>
+    Nesses casos, o cadastro do motorista, do veículo e dos ajudantes deve ser realizado no momento da chegada.
+  </p>
+
+  <p>
+    Para registrar a entrada ou saída desses veículos, acesse o link abaixo:
+  </p>
+
+  <a href="https://www.appsheet.com/start/cf5105cc-0cbb-4227-9f76-78446031709a?newUser=true&onboarding=true#appName=PORTARIA-5183578&group=%5B%5D&page=fastTable&sort=%5B%5D&table=FORN.+DENTRO+DO+CAD&view=FORNEC.+SODEXO+E+MANUTEN%C3%87%C3%83O" target="_blank">
+    Acessar APP PORTARIA – VEÍCULOS DO RESTAURANTE / MANUTENÇÃO
+  </a>
+
+  <p>
+    Verifique na etiqueta fixada na mesa se o fornecedor está autorizado e se está no dia correto para acesso.
+  </p>
+
+  <p>
+    Caso todas as informações estejam corretas, clique no círculo amarelo com o ícone de carrinho de entregas e preencha os dados do motorista e do veículo.
+  </p>
+
+  <p>
+    Em seguida, o aplicativo perguntará se há ajudantes para acesso. Caso positivo, preencha os dados e forneça um cartão de acesso para cada ajudante.
+  </p>
+
+  <div class="alerta-acesso">
+    <p><strong>⚠️ Atenção:</strong></p>
+    <p>
+      Os ajudantes não poderão acessar embarcados no veículo. Eles devem utilizar o cartão de acesso para entrada pelo torniquete.
+    </p>
+  </div>
+</div>
+  </div>
+
+
+  <p> 
+  <a href="#topo" class="btn-voltar">VOLTAR</a>
+  </p> 
+</div>
+
+
+
+  <div class="section" id="pedestre">
+    <h2>Acesso de Pedestres</h2>
+
+    <div class="info-card">
+
+      <img src="cartoes.png" alt="Imagem dos cartões" class="imagem-cliente">
+
+      <div class="texto-cartoes">
+
+         <p><strong>CONHECENDO OS CARTÕES DE ACESSO</strong></p>
+         <p>Como podemos observar na imagem ao lado, trabalhamos com 3 tipos de cartões: PROVISÓRIO, VISITA E PRESTADOR DE SERVIÇO onde:</p>
+         <p><strong>PROVISÓRIO:</strong> São os cartões destinados aos colaboradores Meli, Randstad e Adecco</p>
+         <p><strong>VISITA:</strong> São os cartões destinados aos visitantes do Meli</p>
+         <p><strong>PRESTADOR DE SERVIÇO:</strong> São os cartões destinado aos prestadores de serviço que estão trabalhando no Meli</p>
+
+      </div>
+
+    </div>
+
+    <div class="info-card">
+      <img src="cartao.png" alt="Imagem do cartão" class="imagem-cliente">
+
+      <div class="texto-cartao">
+
+         <p><strong>NUMERAÇÃO DO CARTÃO</strong></p>
+         <p>Todo cartão tem sua identificação única que é a numeração que está localizado no destaque da imagem ao lado</p>
+         <p>Portanto nunca vai existir a mesma numeração para dois cartões diferentes</p>
+
+      </div>
+    </div>
+
+
+    <h2>Registrando um Cartão de Acesso</h2>
+
+    <p><strong>Para registrar um cartão de acesso no sistema, é fundamental seguir as regras básicas abaixo:</strong></p>
+
+    <p>Todo indivíduo deve, obrigatoriamente, apresentar um documento oficial com foto. <strong>Não é permitido</strong> aceitar xerox ou fotos do documento exibidas pelo smartphone.</p>
+
+    <p>São aceitos documentos digitais emitidos por órgãos oficiais, como:</p>
+    <ul>
+      <li>Identidade digital;</li>
+      <li>RG disponível no portal Gov.br;</li>
+      <li>CNH digital;</li>
+      <li>e-Título com biometria coletada.</li>
+    </ul>
+
+    <p><strong>Atenção:</strong> Caso o e-Título não possua biometria cadastrada, ele <strong>não deve ser aceito</strong>.</p>
+
+    <p>A Carteira de Trabalho digital <strong>não é aceita</strong> como documento oficial, pois a foto pode ser alterada a qualquer momento. Para esse caso, somente a versão física é válida.</p>
+
+    <p><strong>ATENÇÃO:</strong> Exclusivamente para colaboradores MELI, é permitido utilizar o crachá MELI como identificação. <strong>Não é permitido</strong> aceitar crachás de outras empresas, visitantes ou prestadores de serviço.</p>
+
+    <p>Após a validação do documento, o próximo passo é consultar no aplicativo da Portaria se o indivíduo possui acesso autorizado no sistema clicando no link abaixo.</p>
+
+    <p>
+      <a href="https://www.appsheet.com/start/cf5105cc-0cbb-4227-9f76-78446031709a?newUser=true&onboarding=true#appName=PORTARIA-5183578&group=%5B%7B%22Column%22%3A%22Data+entrada%22%2C%22Order%22%3A%22Descending%22%7D%5D&page=fastTable&sort=%5B%7B%22Column%22%3A%22Hora+entrada%22%2C%22Order%22%3A%22Descending%22%7D%5D&table=Portaria&view=REGISTRAR+CART%C3%95ES+E+HIST%C3%93RICO+DE+CART%C3%95ES" target="_blank">
+        Acessar APP PORTARIA
+      </a>
+     </p>
+
+      <div class="texto-cartao">
+      <div class="info-card">
+        <h2>Para Prestadores de Serviços e Visitantes</h2>
+      </div> 
+      <p>Para os tipos de indivíduos acima, devemos considerar duas regras básicas: se o indivíduo for Prestador de Serviço ou Visitante, será necessário verificar se ele possui liberação concedida na opção ‘Solicitação de Acesso’, conforme ilustrado na imagem abaixo</p>    
+      <img src="solicitacao.png" alt="Imagem do Aplicativo do Controlador" class="imagem-appport"><br><p>
+      <p>Clique na lupa no canto superior direito do aplicativo e pesquise pelo cpf ou pelo nome do indivíduo.</p>    
+      <p>Ao localizar o indivíduo no aplicatvio ATENTAR-SE para os seguintes campos: STATUS PEDIDO e DT INI</p>    
+      <p><strong>O indivíduo deverá estar APROVADO e com a DATA INICIAL vigente para o registro do cartão</strong></p>    
+
+     <img src="regcartao.png" alt="Registrando um cartão" class="imagem-regcartao">
+
+  <div class="texto-cartoes">
+
+    <p>
+      Se os requisitos acima estiverem de acordo, podemos iniciar o registro do cartão.
+      Clique no nome do indivíduo no aplicativo e preencha os seguintes campos:
+    </p>
+
+    <p><strong>CARTÃO:</strong> informe a numeração do cartão que será fornecido ao indivíduo.</p>
+  
+    <p><strong>TIPO CARTÃO:</strong> selecione o tipo de cartão que está sendo entregue.</p>
+
+    <p><strong>FUNC_G4S:</strong> selecione o seu nome para registrar que o cartão foi entregue por você.</p>
+
+    <p>Em seguida, clique em <strong>Salvar</strong>.</p>
+
+    <p><strong>Pronto!</strong> O cartão está devidamente registrado.</p>
+
+    <p>Entregue o cartão ao indivíduo juntamente com o seu documento.</p>
+
+    </div>
+ 
+   <a href="#topo" class="btn-voltar">VOLTAR</a>
+
+   </div>     
+
+      <div class="info-card">
+        <h2>Para Colaboradores Meli, Randstad e Adecco</h2>
+      </div> 
+      <p>Para os representantes acima, devemos consultar se o colaborador está ativo na opção "Database" e se está portando seu crachá com o cartão de acesso ou não.</p>    
+      <img src="database.png" alt="Imagem do Aplicativo do Controlador" class="imagem-appport"><br><p>
+      <p>Clique na lupa no canto superior direito do aplicativo e pesquise pelo nome do representante.</p>    
+      <p><strong>Se o nome do representante apareceu nessa pesquisa é porque ele está ativo no database e pode ser registrado um cartão provisório para ele preenchendo os campos a seguir.</strong></p>    
+       <div class="bloco alerta">
+        <h4>⚠️ ATENÇÃO</h4>
+          <p>Caso o representante estiver portando seu cartão de acesso, mesmo que ele esteja ativo no database o controlador deverá imediatamente consultar a recepção se o representante pode acessar</p>
+          <p>Não liberar nenhum cartão enquanto a recepção não retornar positivamente.</p>
+       </div>      
+
+     <img src="regcartaomeli.png" alt="Registrando um cartão" class="imagem-regcartao">
+
+  <div class="texto-cartoes">
+
+    <p><strong>CPF:</strong> informe o cpf do representante.</p>
+
+    <p><strong>Nº CARTÃO:</strong> informe a numeração do cartão que será fornecido ao representante.</p>
+  
+    <p><strong>TIPO DE CARTÃO:</strong> selecione o tipo de cartão que está sendo entregue.</p>
+
+    <p><strong>CONTROLADOR G4S:</strong> selecione o seu nome para registrar que o cartão foi entregue por você.</p>
+
+    <p>Em seguida, clique em <strong>Salvar</strong>.</p>
+
+    <p><strong>Pronto!</strong> O cartão está devidamente registrado.</p>
+
+    <p>Entregue o cartão ao representante juntamente com o seu documento.</p>
+
+    <a href="#topo" class="btn-voltar">VOLTAR</a>
+
+    </div>
+   </div>     
+
+  <div class="section" id="baixa">
+    <h2>Baixa de Cartão de Acesso</h2>
+
+      <img src="baixacartao.png" class="img-baixacartao" alt="Baixa de Cartão de Acesso"><p>
+
+      <p>Conforme figura acima, abra o Aplicativo da Portaria no link abaixo.</p>
+
+      <a href="https://www.appsheet.com/start/cf5105cc-0cbb-4227-9f76-78446031709a?newUser=true&onboarding=true#appName=PORTARIA-5183578&group=%5B%7B%22Column%22%3A%22Data+entrada%22%2C%22Order%22%3A%22Descending%22%7D%5D&page=fastTable&sort=%5B%7B%22Column%22%3A%22Hora+entrada%22%2C%22Order%22%3A%22Descending%22%7D%5D&table=Portaria&view=REGISTRO+DE+DEVOLU%C3%87%C3%83O+DE+CART%C3%83O" target="_blank">
+        Acessar APP PORTARIA
+      </a>
+      <p>Clique na lupa no canto superior direito do aplicativo e localize o cartão pela sua numeração.</p>
+      <p>Ao localizar o cartão clique nas ocorrências desse cartão que estão em aberto e em seguida clique em salvar.</p>
+      <p><strong>ATENÇÃO!</strong> Caso não encontre nenhuma ocorrência em aberto para o cartão consultado, verificar se a numeração do cartão se inicia com o algarismo ZERO, se estiver com ZERO apague esse algarismo da frente dos números e procure novamente. Se ainda assim não encontrares nenhuma ocorrência você deverá consultar se existe ocorrência em aberto na <strong>PLANILHA DA RECEPÇÃO</strong> clicando no link abaixo. Através das teclas de atalho CTRL+F digite o número do cartão a ser localizado na planilha da recepção e verifique a última ocorrência desse cartão na planilha. Preencha os campos em vermelho <strong>HORA SAÍDA e DATA SAÍDA</strong> para efetuar a baixa.</p>
+
+      <a href="https://docs.google.com/spreadsheets/d/1uDEAxLBf0cttv4eMFB5ginEHTLTxNtiHAIJ6wfOPofo/edit?gid=1768655742#gid=1768655742" target="_blank">
+        Acessar Planilha da Recepção
+      </a>
+
+      <p><strong>Pronto!</strong> O cartão já está baixado e já pode ser guardado e utilizado novamente.</p>
+
+      <p><strong>IMPORTANTE – BLOQUEIO LENEL</strong></p>
+
+      <ul>
+       <li>Verificar no <strong>APLICATIVO DA PORTARIA</strong> ou na <strong>PLANILHA DA RECEPÇÃO</strong> o campo <strong>Obs</strong>.</li>
+
+        <li>Caso conste a informação <strong>"BLOQUEADO LENEL"</strong>:
+          <ul>
+            <li>Separar imediatamente o cartão.</li>
+            <li>Solicitar o desbloqueio junto à recepção.</li>
+            <li>Aguardar a confirmação da recepcionista.</li>
+          </ul>
+        </li>
+
+        <li>O cartão não deve ser reutilizado ou guardado antes da confirmação.</li>
+ 
+        <li>Somente após a confirmação do desbloqueio pela recepção o cartão poderá ser liberado para uso novamente.</li>
+      </ul>
+    
+      <a href="#topo" class="btn-voltar">VOLTAR</a>
+
+  </div>
+
+  <div class="section" id="tags">
+
+    <h2>Baixa de Tag do Estacionamento</h2>
+
+      <div class="info-card">
+
+         <img src="cardtag.png" alt="Imagem dos cartões" class="imagem-cliente"><p>
+         <div class="texto-cartoes">
+           <p>Existem 3 tipos de TAGs para serem limpas ao fim de cada plantão, BRANCA, AZUL e VERDE..</p>
+           <p><strong>BRANCA -</strong> São as TAGs destinadas aos Prestadores de Serviços.</p>
+           <p><strong>AZUL -</strong> São as TAGs destinadas aos Visitantes do Mercado Livre.</p>
+           <p><strong>VERDE -</strong> São as TAGs destinadas aos Teceirizados que trabalham continuamente no Mercado Livre.</p>
+         </div>
+      </div>
+
+      <p><strong>Limpando as TAGs.</strong></p>
+
+      <img src="tags.png" class="img-baixatag" alt="Baixa de Tag do Estacionamento"><p>
+
+      <p>Conforme figura acima, abra o Aplicativo da Portaria no link abaixo.</p>
+
+      <a href="https://www.appsheet.com/start/cf5105cc-0cbb-4227-9f76-78446031709a?newUser=true&onboarding=true#appName=PORTARIA-5183578&group=%5B%5D&page=fastTable&sort=%5B%7B%22Column%22%3A%22TAG_PROC%22%2C%22Order%22%3A%22Ascending%22%7D%5D&table=ACESSO_PORTARIA&view=LIMPAR+TAGs" target="_blank">
+        Acessar APP PORTARIA  </a>
+
+      <p>Localize a TAG a ser baixada respeitando a numeração e a sua coloração, ao localizar clique em Limpar. Limpe todas as ocorrências que tiverem da mesma TAG.</p>
+      <p><strong>Pronto!</strong> O TAG já está baixada e já pode ser utilizada novamente.</p>
+      
+      <a href="#topo" class="btn-voltar">VOLTAR</a>
+   </div>
+
+  </div>
+
+
+  <div class="section" id="finalizando">
+
+    <h2>Finalizando o Plantão</h2>
+
+    <ol>
+
+     <li>  
+       
+        <strong>Efetue a Contagem dos Cartões que restaram no fim do plantão</strong><br>
+
+        <img src="insumos.png" alt="Contagem de Cartões" style="max-width:100%; height:auto; margin:10px 0;"><p>
+        O próximo passo é efetuar a contagem dos cartões para finalizar o plantão preenchendo o formulário de insumos conforme a tela acima clicando no link abaixo.</p>
+       <p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfvfQ099NbhlCvAJXVuPwreKfanIOQmCmhE0OguKdzDiRCUAQ/viewform" target="_blank">
+            Acessar formulário de insumos
+         </a>
+       </p>
+
+      </li>           
+
+     <li>
+
+      <strong>Limpe as TAGs para a próxima equipe que irá assumir o plantão</strong><br>
+
+      <img src="tags.png" class="img-baixatag" alt="Baixa de Tag do Estacionamento"><p>
+
+      <p>Conforme figura acima, abra o Aplicativo da Portaria no link abaixo.</p>
+
+      <a href="https://www.appsheet.com/start/cf5105cc-0cbb-4227-9f76-78446031709a?newUser=true&onboarding=true#appName=PORTARIA-5183578&group=%5B%5D&page=fastTable&sort=%5B%7B%22Column%22%3A%22TAG_PROC%22%2C%22Order%22%3A%22Ascending%22%7D%5D&table=ACESSO_PORTARIA&view=LIMPAR+TAGs" target="_blank">
+        Acessar APP PORTARIA  </a>
+
+      <p>Localize a TAG a ser baixada respeitando a numeração e a sua coloração, ao localizar clique em Limpar. Limpe todas as ocorrências que tiverem da mesma TAG.</p>
+
+      <p><strong>Pronto!</strong> O TAG já está baixada e já pode ser utilizada novamente.</p>
+
+     </li>          
+
+     <li>          
+      <strong>Encerre o Livro de Ocorrências</strong><br>
+
+      <img src="livro.png" alt="Livro de Ocorrência" style="max-width:100%; height:auto; margin:10px 0;">
+
+      <p>
+      <strong>Agora é só aguardar a sua rendição chegar e Fim de papo<br><p>
+
+      <strong>Boa Folga e um ótimo descanso!<br><p>
+
+      </p>
+ 
+     </li>          
+
+   </ol>
+   <a href="#topo" class="btn-voltar">VOLTAR</a>
+  </div>
+
+  <div class="section" id="contato">
+    <h2>Contatos</h2>
+    <p style="font-weight: normal;">Supervisor: Wagner Perrot | </p>
+    <p style="font-weight: normal;">Líder da Equipe Alpha: <a href="mailto:ext_sabaliei@mercadolivre.com">Samanta Balieiro</a></p>
+    <p style="font-weight: normal;">Líder da Equipe Bravo: <a href="mailto:ext_thsuelen@mercadolivre.com">Thayane Suelen</a></p>
+    <p style="font-weight: normal;">Líder da Equipe Charlie: <a href="mailto:ext_chavidal@mercadolivre.com">Charlene Vidal</a></p>
+    <p style="font-weight: normal;">Líder da Equipe Delta: <a href="mailto:ext_sicamarc@mercadolivre.com">Marcio Silva</a></p>
+    <a href="#topo" class="btn-voltar">VOLTAR</p></a>
+  </div>
+
+</div>
+
+
+  <div class="section" id="empresa">
+    <h2>A Empresa</h2>
+
+    <div class="info-card">
+
+      <img src="aempresa.png" class="img-aempresa" alt="A Empresa">
+
+      <div class="texto-empresa">
+        <h3>EXPERIÊNCIA GLOBAL, CONHECIMENTO LOCAL</h3>
+        <p style="font-weight: normal;">A história da G4S começou a ser construída em 1901 a partir da fundação da empresa de vigilância Kjøbenhavn Frederiksberg Nattevagt na Dinamarca.</p> 
+        <p style="font-weight: normal;">Com o passar dos anos, a organização se fundiu com outras do ramo até que, em 2004, lançou oficialmente a marca G4S. Em 2010, já sendo referência global, a empresa chegou ao Brasil com aquisições das empresas Plantech Instalarme.</p> 
+        <p style="font-weight: normal;">Em dois anos, a G4S Brasil adquiriu as empresas Vanguarda e Interativa Service, consolidando sua presença no país. Com sede em São Paulo e filiais em Minas Gerais, Espírito Santo, Rio de Janeiro, Paraná, Santa Catarina e Rio Grande do Sul.</p> 
+        <p style="font-weight: normal;">Em 2021, mais uma aquisição fortaleceu suas operações: a G4S foi adquirida pela empresa norte-americana Allied Universal. Atualmente, a empresa conta com mais de 13 mil colaboradores no Brasil.</p>
+        <p style="font-weight: normal;">Trazendo excelência em serviço para os clientes, a G4S é a primeira empresa do segmento a ter a certificação ISO 45001, que é referência em gestão de SSO (Saúde e Segurança Ocupacional), além de possuir certificações nas áreas de Qualidade e Meio Ambiente.</p>
+      </div>
+    </div>
+   <a href="#topo" class="btn-voltar">VOLTAR</a>
+  </div>
+
+
+
+<div class="section" id="cliente">
+
+<footer>
+  <p>© 2026 G4S - Todos os direitos reservados - Desenvolvedor José Christiano</p>
+
+</footer>
+
+</body>
+</html>
