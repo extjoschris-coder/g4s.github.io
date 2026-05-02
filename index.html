@@ -5,123 +5,213 @@
   <title>Tutorial do Controlador de Acesso - G4S</title>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f4f6f8;
-    }
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f4f6f8;
+  color: #333;
+}
 
-    header {
-      background-color: #001C41;
-      padding: 15px 0;
-      text-align: center;
-    }
+/* HEADER */
+header {
+  background-color: #001C41;
+  padding: 15px 20px;
+}
 
-    header img { 
-       width: 40%; /* ocupa toda a largura */ 
-       display: block; /* remove espaço branco abaixo da imagem */ 
-    }
+/* MENU */
+nav {
+  background-color: #162447;
+  padding: 10px;
+  text-align: center;
+}
 
-    nav {
-      background-color: #162447;
-      padding: 10px;
-      text-align: center;
-    }
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
 
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+nav a:hover {
+  color: #4da3ff;
+}
 
-    nav a:hover {
-      color: #4da3ff;
-    }
+/* SUBMENU */
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  background-color: #162447;
+  min-width: 200px;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.submenu a {
+  display: block;
+  padding: 10px;
+  color: white;
+  text-align: left;
+}
+
+.submenu a:hover {
+  background-color: #1f3c88;
+}
+
+.dropdown:hover .submenu {
+  display: block;
+}
+
+/* CONTAINER */
+.container {
+  padding: 20px;
+}
+
+/* SEÇÕES */
+.section {
+  background-color: white;
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+}
+
+.section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+/* TÍTULOS */
+h2 {
+  color: #1f3c88;
+  margin-bottom: 15px;
+}
+
+h3 {
+  margin-top: 10px;
+}
+
+/* CARDS */
+.info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 15px;
+
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
 
 
-    /* 🔽 SUBMENU (ADICIONADO) */
-    .dropdown {
-      display: inline-block;
-      position: relative;
-    }
 
-    .submenu {
-      display: none;
-      position: absolute;
-      background-color: #162447;
-      min-width: 180px;
-      top: 100%;
-      left: 0;
-      z-index: 1000;
-    }
+/* IMAGENS PADRÃO */
+.info-card img,
+.imagem-cliente,
+.imagem-central,
+.img-controlador,
+.img-aempresa {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 15px auto;
+}
 
-    .submenu a {
-      display: block;
-      padding: 10px;
-      color: white;
-      text-align: left;
-    }
+/* TEXTOS */
+.texto-postos,
+.texto-cliente,
+.texto-controlador,
+.texto-cartoes,
+.texto-central,
+.texto-empresa {
+  flex: 1;
+}
 
-    .submenu a:hover {
-      background-color: #1f3c88;
-    }
+/* ALERTAS */
+.alerta-acesso {
+  background-color: #fff3cd;
+  border-left: 5px solid #ffc107;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
 
-    .dropdown:hover .submenu {
-      display: block;
-    }
-    /* 🔼 FIM SUBMENU */
+/* BLOCOS (regras/alertas) */
+.bloco {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
 
+.regra {
+  background-color: #ffe5e5;
+  border-left: 5px solid red;
+}
 
-    .container {
-      padding: 20px;
-    }
+.excecao {
+  background-color: #e6f0ff;
+  border-left: 5px solid #4da3ff;
+}
 
-    .section {
-      background-color: white;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
-    }
+.alerta {
+  background-color: #fff3cd;
+  border-left: 5px solid #ffc107;
+}
 
-    h2 {
-      color: #1f3c88;
-    }
+/* BOTÃO VOLTAR */
+.btn-voltar {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 15px;
+  background-color: #1f3c88;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
 
-   .info-card {
-     display: flex;
-     align-items: flex-start;
-     gap: 20px;
-   }
+.btn-voltar:hover {
+  background-color: #4da3ff;
+}
 
-   .img-postos {
-     width: 250px;
-     height: auto;
-   }
+/* LISTAS */
+ul {
+  padding-left: 20px;
+}
 
-  .texto-postos {
-     flex: 1;
-   }
+/* FOOTER */
+footer {
+  background-color: #1f3c88;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 20px;
+}
 
-    footer {
-      background-color: #1f3c88;
-      color: white;
-      text-align: center;
-      padding: 10px;
-    }
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .info-card {
+    flex-direction: column;
+  }
 
-    @media (max-width: 768px) {
-      .info-card {
-        flex-direction: column;
-      }
+  nav a {
+    display: block;
+    margin: 10px 0;
+  }
 
-      nav a {
-        display: block;
-        margin: 10px 0;
-      }
-    }
+}
   </style>
 </head>
 
@@ -165,7 +255,7 @@
 </div>
 
 <div class="section" id="cliente">
-  <h2>Cliente</h2>
+  <h2>🏬Cliente</h2>
 
   <div class="info-card">
     
@@ -217,7 +307,7 @@
       <a href="#topo" class="btn-voltar">VOLTAR</a>
 </div>
   <div class="section" id="funcao">
-    <h2>O que faz um Controlador de Acesso?</h2>
+    <h2>🚦O que faz um Controlador de Acesso?</h2>
 
     <div class="info-card">
 
@@ -248,7 +338,7 @@
   </div>
 
   <div class="section" id="conectando">
-    <h2>Início de Plantão</h2>
+    <h2>🔋Início de Plantão</h2>
 
     <ol>
       <li><a href="#assumindo">Assumindo o plantão</a></li>  
@@ -270,7 +360,7 @@
 
         <div class="section" id="computador">
 
-        <h2>Logando no Computador</h2>
+        <h2>🔑Logando no Computador</h2>
 
         <img src="Login.png" alt="Logando no Sistema" style="max-width:100%; height:auto; margin:10px 0;">
 
@@ -281,7 +371,7 @@
 
         <div class="section" id="google">
 
-        <h2>Logando no Google</h2>
+        <h2>🔑Logando no Google</h2>
 
         <img src="Google.png" alt="Logando no Google" style="max-width:100%; height:auto; margin:10px 0;">
 
@@ -299,7 +389,7 @@
 
         <div class="section" id="contagem">
 
-        <h2>Contagem dos Cartões de Acesso da Portaria</h2>
+        <h2>🧮Contagem dos Cartões de Acesso da Portaria</h2>
 
         <img src="insumos.png" alt="Contagem de Cartões" style="max-width:100%; height:auto; margin:10px 0;"><p>
         O próximo passo é efetuar a contagem dos cartões para dar início ao plantão e preencher o formulário de insumos conforme a tela acima clicando no link abaixo.</p>
@@ -315,7 +405,7 @@
 
         <div class="section" id="eclusa">
 
-        <h2>Informar o Status de Operação das Eclusas</h2>
+        <h2>⛩️Informar o Status de Operação das Eclusas</h2>
 
         <img src="stateclusa.png" alt="Status da Eclusa" style="max-width:100%; height:auto; margin:10px 0;"><p>
         <p>Informe as condições dos portões, cancelas e garras de tigre de cada eclusa clicando no aplicativo abaixo.<p>
@@ -331,7 +421,7 @@
 
       <div class="section" id="livro">
 
-      <h2>Abertura do Livro de Ocorrências</h2>
+      <h2>📝Abertura do Livro de Ocorrências</h2>
 
       <img src="livro.png" alt="Livro de Ocorrência" style="max-width:100%; height:auto; margin:10px 0;">
 
@@ -523,8 +613,42 @@
 
 
 
+  <div class="section" id="tags">
+    <h2>🅿️Baixa de Tag do Estacionamento</h2>
+
+    <div class="info-card">
+
+      <img src="cardtag.png" alt="Imagem das Tags" class="imagem-cliente"><p>
+      <div class="texto-cartoes">
+         <p>Existem 4 tipos de TAGs para serem limpas ao fim de cada plantão, BRANCA, AZUL, VERDE e AMARELA</p>
+         <p><strong>BRANCA -</strong> São as TAGs destinadas aos Prestadores de Serviços.</p>
+         <p><strong>AZUL -</strong> São as TAGs destinadas aos Visitantes do Mercado Livre.</p>
+         <p><strong>VERDE -</strong> São as TAGs destinadas aos Teceirizados que trabalham continuamente no Mercado Livre.</p>
+         <p><strong>AMARELA -</strong> São as TAGs destinadas aos colaboradores Meli, mas essa o controlador não tem acesso, só serve para o vigitlante dar entrada no veículo.</p>
+      </div>
+
+    </div>
+
+    <div class="info-card">
+      <img src="tags.png" class="img-cliente" alt="Baixa de Tag do Estacionamento"><p>
+
+      <div class="texto-cartoes">
+      <p>Conforme figura acima, abra o Aplicativo da Portaria no link abaixo.</p>
+
+      <a href="https://www.appsheet.com/start/cf5105cc-0cbb-4227-9f76-78446031709a?newUser=true&onboarding=true#appName=PORTARIA-5183578&group=%5B%5D&page=fastTable&sort=%5B%7B%22Column%22%3A%22TAG_PROC%22%2C%22Order%22%3A%22Ascending%22%7D%5D&table=ACESSO_PORTARIA&view=LIMPAR+TAGs" target="_blank">
+        Acessar APP PORTARIA  </a>
+
+      <p>Localize a TAG a ser baixada respeitando a numeração e a sua coloração, ao localizar clique em Limpar. Limpe todas as ocorrências que tiverem da mesma TAG.</p>
+      <p><strong>Pronto!</strong> O TAG já está baixada e já pode ser utilizada novamente.</p>
+      </div>
+    </div>
+    <a href="#topo" class="btn-voltar">VOLTAR</a>
+ </div>
+
+
+
   <div class="section" id="pedestre">
-    <h2>Acesso de Pedestres</h2>
+    <h2>🚸Acesso de Pedestres</h2>
 
     <div class="info-card">
 
@@ -533,29 +657,29 @@
       <div class="texto-cartoes">
 
          <p><strong>CONHECENDO OS CARTÕES DE ACESSO</strong></p>
-         <p>Como podemos observar na imagem ao lado, trabalhamos com 3 tipos de cartões: PROVISÓRIO, VISITA E PRESTADOR DE SERVIÇO onde:</p>
-         <p><strong>PROVISÓRIO:</strong> São os cartões destinados aos colaboradores Meli, Randstad e Adecco</p>
-         <p><strong>VISITA:</strong> São os cartões destinados aos visitantes do Meli</p>
-         <p><strong>PRESTADOR DE SERVIÇO:</strong> São os cartões destinado aos prestadores de serviço que estão trabalhando no Meli</p>
-
+         <p>Como podemos observar na imagem ao lado, trabalhamos com 5 tipos de cartões: EMPREITEIRA, FORNECEDOR, VISITANTE, STAFF e TEMPORÁRIO onde:</p>
+         <p><strong>EMPREITEIRA:</strong> São os cartões destinado aos prestadores de serviço que estão trabalhando no Meli</p>
+         <p><strong>FORNECEDOR:</strong> São os cartões destinado aos prestadores de serviço do Restaurante e da Manutenção que tem acesso contínua programado na etiqueta da mesa</p>
+         <p><strong>VISITANTE:</strong> São os cartões destinados aos visitantes do Meli</p>
+         <p><strong>STAFF:</strong> São os cartões destinados ao Team Lederores do Mercado Livre</p>
+         <p><strong>TEMPORÁRIO:</strong> São os cartões destinados aos colaboradores Meli, Randstad e Adecco</p>
       </div>
-
+  
     </div>
 
     <div class="info-card">
+
       <img src="cartao.png" alt="Imagem do cartão" class="imagem-cliente">
 
-      <div class="texto-cartao">
+      <div class="texto-cartoes">
 
          <p><strong>NUMERAÇÃO DO CARTÃO</strong></p>
          <p>Todo cartão tem sua identificação única que é a numeração que está localizado no destaque da imagem ao lado</p>
          <p>Portanto nunca vai existir a mesma numeração para dois cartões diferentes</p>
 
       </div>
-    </div>
-
-
-    <h2>Registrando um Cartão de Acesso</h2>
+    </div> 
+    <h2>🪪Registrando um Cartão de Acesso</h2>
 
     <p><strong>Para registrar um cartão de acesso no sistema, é fundamental seguir as regras básicas abaixo:</strong></p>
 
@@ -569,11 +693,16 @@
       <li>e-Título com biometria coletada.</li>
     </ul>
 
-    <p><strong>Atenção:</strong> Caso o e-Título não possua biometria cadastrada, ele <strong>não deve ser aceito</strong>.</p>
+
+    <div class="alerta-acesso">
+    <p><strong>⚠️ Atenção:</strong></p>
+
+    <p>Caso o e-Título não possua biometria cadastrada, ele <strong>não deve ser aceito</strong>.</p>
 
     <p>A Carteira de Trabalho digital <strong>não é aceita</strong> como documento oficial, pois a foto pode ser alterada a qualquer momento. Para esse caso, somente a versão física é válida.</p>
 
-    <p><strong>ATENÇÃO:</strong> Exclusivamente para colaboradores MELI, é permitido utilizar o crachá MELI como identificação. <strong>Não é permitido</strong> aceitar crachás de outras empresas, visitantes ou prestadores de serviço.</p>
+    <p>Exclusivamente para colaboradores MELI, é permitido utilizar o crachá MELI como identificação. <strong>Não é permitido</strong> aceitar crachás de outras empresas, visitantes ou prestadores de serviço.</p>
+    </div>
 
     <p>Após a validação do documento, o próximo passo é consultar no aplicativo da Portaria se o indivíduo possui acesso autorizado no sistema clicando no link abaixo.</p>
 
@@ -584,9 +713,7 @@
      </p>
 
       <div class="texto-cartao">
-      <div class="info-card">
-        <h2>Para Prestadores de Serviços e Visitantes</h2>
-      </div> 
+        <h2>👷Para Prestadores de Serviços e Visitantes</h2>
       <p>Para os tipos de indivíduos acima, devemos considerar duas regras básicas: se o indivíduo for Prestador de Serviço ou Visitante, será necessário verificar se ele possui liberação concedida na opção ‘Solicitação de Acesso’, conforme ilustrado na imagem abaixo</p>    
       <img src="solicitacao.png" alt="Imagem do Aplicativo do Controlador" class="imagem-appport"><br><p>
       <p>Clique na lupa no canto superior direito do aplicativo e pesquise pelo cpf ou pelo nome do indivíduo.</p>    
@@ -616,13 +743,7 @@
 
     </div>
  
-   <a href="#topo" class="btn-voltar">VOLTAR</a>
-
-   </div>     
-
-      <div class="info-card">
-        <h2>Para Colaboradores Meli, Randstad e Adecco</h2>
-      </div> 
+        <h2>👨‍💼Para Colaboradores Meli, Randstad e Adecco</h2>
       <p>Para os representantes acima, devemos consultar se o colaborador está ativo na opção "Database" e se está portando seu crachá com o cartão de acesso ou não.</p>    
       <img src="database.png" alt="Imagem do Aplicativo do Controlador" class="imagem-appport"><br><p>
       <p>Clique na lupa no canto superior direito do aplicativo e pesquise pelo nome do representante.</p>    
@@ -633,7 +754,7 @@
           <p>Não liberar nenhum cartão enquanto a recepção não retornar positivamente.</p>
        </div>      
 
-     <img src="regcartaomeli.png" alt="Registrando um cartão" class="imagem-regcartao">
+     <p><img src="regcartaomeli.png" alt="Registrando um cartão" class="imagem-regcartao"></p>
 
   <div class="texto-cartoes">
 
@@ -657,7 +778,7 @@
    </div>     
 
   <div class="section" id="baixa">
-    <h2>Baixa de Cartão de Acesso</h2>
+    <h2>🪪Baixa de Cartão de Acesso</h2>
 
       <img src="baixacartao.png" class="img-baixacartao" alt="Baixa de Cartão de Acesso"><p>
 
@@ -698,42 +819,12 @@
 
   </div>
 
-  <div class="section" id="tags">
-
-    <h2>Baixa de Tag do Estacionamento</h2>
-
-      <div class="info-card">
-
-         <img src="cardtag.png" alt="Imagem dos cartões" class="imagem-cliente"><p>
-         <div class="texto-cartoes">
-           <p>Existem 3 tipos de TAGs para serem limpas ao fim de cada plantão, BRANCA, AZUL e VERDE..</p>
-           <p><strong>BRANCA -</strong> São as TAGs destinadas aos Prestadores de Serviços.</p>
-           <p><strong>AZUL -</strong> São as TAGs destinadas aos Visitantes do Mercado Livre.</p>
-           <p><strong>VERDE -</strong> São as TAGs destinadas aos Teceirizados que trabalham continuamente no Mercado Livre.</p>
-         </div>
-      </div>
-
-      <p><strong>Limpando as TAGs.</strong></p>
-
-      <img src="tags.png" class="img-baixatag" alt="Baixa de Tag do Estacionamento"><p>
-
-      <p>Conforme figura acima, abra o Aplicativo da Portaria no link abaixo.</p>
-
-      <a href="https://www.appsheet.com/start/cf5105cc-0cbb-4227-9f76-78446031709a?newUser=true&onboarding=true#appName=PORTARIA-5183578&group=%5B%5D&page=fastTable&sort=%5B%7B%22Column%22%3A%22TAG_PROC%22%2C%22Order%22%3A%22Ascending%22%7D%5D&table=ACESSO_PORTARIA&view=LIMPAR+TAGs" target="_blank">
-        Acessar APP PORTARIA  </a>
-
-      <p>Localize a TAG a ser baixada respeitando a numeração e a sua coloração, ao localizar clique em Limpar. Limpe todas as ocorrências que tiverem da mesma TAG.</p>
-      <p><strong>Pronto!</strong> O TAG já está baixada e já pode ser utilizada novamente.</p>
-      
-      <a href="#topo" class="btn-voltar">VOLTAR</a>
-   </div>
-
   </div>
 
 
   <div class="section" id="finalizando">
 
-    <h2>Finalizando o Plantão</h2>
+    <h2>🪫Finalizando o Plantão</h2>
 
     <ol>
 
@@ -787,20 +878,20 @@
   </div>
 
   <div class="section" id="contato">
-    <h2>Contatos</h2>
-    <p style="font-weight: normal;">Supervisor: Wagner Perrot | </p>
+    <h2>🗂️Contatos G4S</h2>
+    <p style="font-weight: normal;">Supervisor: <a href="mailto:wagner.pereira@br.g4s.com">Wagner Perrout Pereira</a></p>
     <p style="font-weight: normal;">Líder da Equipe Alpha: <a href="mailto:ext_sabaliei@mercadolivre.com">Samanta Balieiro</a></p>
     <p style="font-weight: normal;">Líder da Equipe Bravo: <a href="mailto:ext_thsuelen@mercadolivre.com">Thayane Suelen</a></p>
     <p style="font-weight: normal;">Líder da Equipe Charlie: <a href="mailto:ext_chavidal@mercadolivre.com">Charlene Vidal</a></p>
     <p style="font-weight: normal;">Líder da Equipe Delta: <a href="mailto:ext_sicamarc@mercadolivre.com">Marcio Silva</a></p>
-    <a href="#topo" class="btn-voltar">VOLTAR</p></a>
+    <a href="#topo" class="btn-voltar">VOLTAR</a>
   </div>
 
 </div>
 
 
   <div class="section" id="empresa">
-    <h2>A Empresa</h2>
+    <h2>🏢A Empresa</h2>
 
     <div class="info-card">
 
@@ -823,7 +914,7 @@
 <div class="section" id="cliente">
 
 <footer>
-  <p>© 2026 G4S - Todos os direitos reservados - Desenvolvedor José Christiano</p>
+  <p>© 2026 G4S - Todos os direitos reservados - Desenvolvedor Christiano Oliveira</p>
 
 </footer>
 
