@@ -149,7 +149,8 @@ h3 {
 }
 
 /* BLOCOS (regras/alertas) */
-.bloco {
+.bloco {f
+  border-left: 5px solid #ffc107;
   padding: 10px;
   margin-top: 10px;
   border-radius: 5px;
@@ -508,7 +509,7 @@ footer {
        <h3>Controle de Eclusas</h3>
 
         <div class="bloco regra">
-          <h4>🔒 REGRA OBRIGATÓRIA</h4>
+          <p><h4>🔒 REGRA OBRIGATÓRIA</h4></p>
            <p>NUNCA abrir os dois portões da mesma eclusa ao mesmo tempo.</p>
            <p>Se um portão estiver <strong>ABERTO</strong>, o outro deve permanecer <strong>FECHADO</strong>.</p>
        </div>
@@ -577,7 +578,11 @@ footer {
   </p>
 
   <p>
-    Nesses casos, o cadastro do motorista, do veículo e dos ajudantes deve ser realizado no momento da chegada.
+    Nesses casos, o cadastro do motorista, do veículo e dos ajudantes deverá ser realizado no momento da sua chegada.
+  </p>
+
+  <p>
+    Os que vão acessar o site deverão apresentar seus documentos bem como a placa do veículo na portaria para o cadastro.
   </p>
 
   <p>
@@ -601,11 +606,19 @@ footer {
   </p>
 
   <div class="alerta-acesso">
-    <p><strong>⚠️ Atenção:</strong></p>
+    <p><strong>⚠️ Atenção</strong></p>
     <p>
       Os ajudantes não poderão acessar embarcados no veículo. Eles devem utilizar o cartão de acesso para entrada pelo torniquete.
     </p>
   </div>
+
+  <div class="bloco excecao">
+    <p><strong>⚠️ Baixa</strong></p>
+    <p>
+      Para dar a baixa do veículo que acessou basta clicar no registro que foi feito na sua chegada, informar a eclusa que ele está saindo e confirmar.
+    </p>
+  </div>
+  
 </div>
   </div>
 
@@ -800,6 +813,8 @@ footer {
       </a>
 
       <p><strong>Pronto!</strong> O cartão já está baixado e já pode ser guardado e utilizado novamente.</p>
+ 
+      <div class="bloco alerta">
 
       <p><strong>IMPORTANTE – BLOQUEIO LENEL</strong></p>
 
@@ -818,6 +833,7 @@ footer {
  
         <li>Somente após a confirmação do desbloqueio pela recepção o cartão poderá ser liberado para uso novamente.</li>
       </ul>
+      </div>
     
       <a href="#topo" class="btn-voltar">VOLTAR</a>
 
